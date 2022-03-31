@@ -40,7 +40,7 @@ func FromGstCapsUnsafeNone(caps unsafe.Pointer) *Caps {
 	}
 	gocaps := ToGstCaps(caps)
 	gocaps.Ref()
-	runtime.SetFinalizer(gocaps, (*Caps).Unref)
+	//runtime.SetFinalizer(gocaps, (*Caps).Unref)
 	return gocaps
 }
 

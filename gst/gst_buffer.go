@@ -23,7 +23,6 @@ import (
 	"bytes"
 	"io"
 	"io/ioutil"
-	"runtime"
 	"sync"
 	"time"
 	"unsafe"
@@ -48,7 +47,7 @@ func FromGstBufferUnsafeNone(buf unsafe.Pointer) *Buffer {
 	wrapped := ToGstBuffer(buf)
 	wrapped.mu = &sync.RWMutex{}
 	wrapped.Ref()
-	runtime.SetFinalizer(wrapped, (*Buffer).Unref)
+	//runtime.SetFinalizer(wrapped, (*Buffer).Unref)
 	return wrapped
 }
 
@@ -56,7 +55,7 @@ func FromGstBufferUnsafeNone(buf unsafe.Pointer) *Buffer {
 func FromGstBufferUnsafeFull(buf unsafe.Pointer) *Buffer {
 	wrapped := ToGstBuffer(buf)
 	wrapped.mu = &sync.RWMutex{}
-	runtime.SetFinalizer(wrapped, (*Buffer).Unref)
+	//runtime.SetFinalizer(wrapped, (*Buffer).Unref)
 	return wrapped
 }
 

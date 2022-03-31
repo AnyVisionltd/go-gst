@@ -31,7 +31,7 @@ func FromGstSampleUnsafeNone(sample unsafe.Pointer) *Sample {
 // This is meant for internal usage and is exported for visibility to other packages.
 func FromGstSampleUnsafeFull(sample unsafe.Pointer) *Sample {
 	s := wrapSample(C.toGstSample(sample))
-	runtime.SetFinalizer(s, (*Sample).Unref)
+	//runtime.SetFinalizer(s, (*Sample).Unref)
 	return s
 }
 
